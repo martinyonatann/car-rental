@@ -23,11 +23,10 @@ function PickCar() {
         <div className="container">
           <div className="pick-container">
             <div className="pick-container__title">
-              <h3>Vehicle Models</h3>
-              <h2>Our rental fleet</h2>
+              <h3>Jenis Motor</h3>
+              <h2>Daftar Kendaraan Sewa Kami</h2>
               <p>
-                Choose from a variety of our amazing vehicles to rent for your
-                next adventure or business trip
+              Beragam pilihan kendaraan siap disewa untuk liburan seru atau urusan bisnis Anda.
               </p>
             </div>
             <div className="pick-container__car-content">
@@ -40,7 +39,7 @@ function PickCar() {
                     btnID("btn1");
                   }}
                 >
-                  Audi A1 S-Line
+                  Yamaha Fino
                 </button>
                 <button
                   className={`${coloringButton("btn2")}`}
@@ -50,7 +49,7 @@ function PickCar() {
                     btnID("btn2");
                   }}
                 >
-                  VW Golf 6
+                  Yamaha Fazzio
                 </button>
                 <button
                   className={`${coloringButton("btn3")}`}
@@ -60,7 +59,7 @@ function PickCar() {
                     btnID("btn3");
                   }}
                 >
-                  Toyota Camry
+                  Yamaha Nmax
                 </button>
                 <button
                   className={`${coloringButton("btn4")}`}
@@ -70,7 +69,7 @@ function PickCar() {
                     btnID("btn4");
                   }}
                 >
-                  BMW 320 ModernLine
+                  Honda Scoopy
                 </button>
                 <button
                   className={`${coloringButton("btn5")}`}
@@ -80,7 +79,7 @@ function PickCar() {
                     btnID("btn5");
                   }}
                 >
-                  Mercedes-Benz GLK
+                  Honda Beat
                 </button>
                 <button
                   className={`${coloringButton("btn6")}`}
@@ -90,7 +89,7 @@ function PickCar() {
                     btnID("btn6");
                   }}
                 >
-                  VW Passat CC
+                  Honda Vario
                 </button>
               </div>
 

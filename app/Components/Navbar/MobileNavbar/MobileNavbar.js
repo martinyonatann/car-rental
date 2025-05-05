@@ -15,27 +15,22 @@ function MobileNavbar() {
       <ul className="mobile-navbar__links">
             <li>
               <a onClick={openNav} href="/">
-                Home
+                Beranda
               </a>
             </li>
             <li>
-              <a onClick={openNav} href="/">
-                About
+              <a onClick={openNav} href="#about">
+                Tentang Kami
               </a>
             </li>
             <li>
-              <a onClick={openNav} href="/">
-                Models
+              <a onClick={openNav} href="#pick__section">
+                Jenis Motor
               </a>
             </li>
             <li>
-              <a onClick={openNav} href="/">
-                Testimonials
-              </a>
-            </li>
-            <li>
-              <a onClick={openNav} href="#download">
-                Download
+              <a onClick={openNav} href="#testimonials">
+                Testimoni
               </a>
             </li>
           </ul>

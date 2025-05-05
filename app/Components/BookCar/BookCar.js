@@ -22,6 +22,8 @@ function BookCar() {
   const [dropOff, setDropOff] = useState("");
   const [pickTime, setPickTime] = useState("");
   const [dropTime, setDropTime] = useState("");
+  const [pickHour, setPickHour] = useState("");
+  const [dropHour, setDropHour] = useState("");
   const [carImg, setCarImg] = useState("");
 
   // modal infos
@@ -49,16 +51,62 @@ function BookCar() {
 
   const confirmBooking = (e) => {
     e.preventDefault();
-    if (ageError) {
-      alert("Please correct the errors before confirming your booking.");
+  
+    // Validation: Ensure all required fields are filled
+    if (!pickUp || !dropOff || !pickTime || !dropTime || !pickHour || !dropHour) {
+      alert("Please fill in all the required fields.");
       return;
     }
-
+  
+    // Format waktu ke 24 jam tanpa AM/PM
+    const formatTime = (timeString) => {
+      const [hours, minutes] = timeString.split(':');
+      return `${hours}:${minutes}`;
+    };
+  
+    // Membuat pesan untuk WhatsApp
+    const message = `Halo The Vroom Vroom Rental Motor Jogja, saya ingin memesan motor:
+      - Tipe Motor: ${carType}
+      - Lokasi Antar: ${pickUp}
+      - Lokasi Jemput: ${dropOff}
+      - Tanggal Antar: ${pickTime} (${formatTime(pickHour)})
+      - Tanggal Jemput: ${dropTime} (${formatTime(dropHour)})
+  
+      Mohon konfirmasi ketersediaan. Terima kasih.`;
+  
+    // Encode pesan untuk URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Nomor WhatsApp admin (ganti dengan nomor yang sebenarnya)
+    const phoneNumber = "6281368380270"; // Format: kode negara tanpa '+' diikuti nomor
+    
+    // URL WhatsApp
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  
     setModal(!modal);
     const doneMsg = document.querySelector(".booking-done");
     doneMsg.style.display = "flex";
+    
+    // Set timeout to give user a chance to see the confirmation message before opening WhatsApp
+    setTimeout(() => {
+      // Buka WhatsApp di tab baru
+      window.open(whatsappURL, "_blank");
+      
+      // Setelah sedikit delay, reload halaman
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }, 2000); // 2 seconds delay before opening WhatsApp
   };
 
+  // Handle time inputs
+  const handlePickHour = (e) => {
+    setPickHour(e.target.value);
+  };
+
+  const handleDropHour = (e) => {
+    setDropHour(e.target.value);
+  };
 
   // taking value of modal inputs
   const handleName = (e) => {
@@ -123,14 +171,30 @@ function BookCar() {
     }
   }, [modal]);
 
-  /*
-  const confirmBooking = (e) => {
-    e.preventDefault();
-    setModal(!modal);
-    const doneMsg = document.querySelector(".booking-done");
-    doneMsg.style.display = "flex";
-  };
-  */
+  // CSS style untuk disabled message dapat juga ditambahkan ke file CSS
+  useEffect(() => {
+    // Menambahkan style untuk disabled message jika belum ada
+    if (!document.getElementById('disabled-button-styles')) {
+      const styleSheet = document.createElement('style');
+      styleSheet.id = 'disabled-button-styles';
+      styleSheet.textContent = `
+        .disabled-message {
+          display: none;
+        }
+        
+        .reserve-button-container:hover .disabled-message {
+          display: block;
+          animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+      `;
+      document.head.appendChild(styleSheet);
+    }
+  }, []);
 
   // taking value of booking inputs
   const handleCar = (e) => {
@@ -157,22 +221,22 @@ function BookCar() {
   // based on value name show car img
   let imgUrl;
   switch (carImg) {
-    case "Audi A1 S-Line":
+    case "Yamaha Fino":
       imgUrl = CarAudi;
       break;
-    case "VW Golf 6":
+    case "Yamaha Fazzio":
       imgUrl = CarGolf;
       break;
-    case "Toyota Camry":
+    case "Yamaha Nmax":
       imgUrl = CarToyota;
       break;
-    case "BMW 320 ModernLine":
+    case "Honda Scoopy":
       imgUrl = CarBmw;
       break;
-    case "Mercedes-Benz GLK":
+    case "Honda Beat":
       imgUrl = CarMercedes;
       break;
-    case "VW Passat CC":
+    case "Honda Vario":
       imgUrl = CarPassat;
       break;
     default:
@@ -197,68 +261,65 @@ function BookCar() {
         <div className="container">
           <div className="book-content">
             <div className="book-content__box">
-              <h2>Book a car</h2>
+              <h2>Pesan Motor</h2>
 
               <p className="error-message">
                 All fields required! <IconX width={20} height={20} />
               </p>
 
               <p className="booking-done">
-                Check your email to confirm an order.{" "}
+                Silahkan lanjutkan pemesanan melalui whatsapp.{" "}
                 <IconX width={20} height={20} onClick={hideMessage} />
               </p>
 
               <form className="box-form">
                 <div className="box-form__car-type">
                   <label>
-                    <IconCar className="input-icon" /> &nbsp; Select Your Car
-                    Type <b>*</b>
+                    <IconCar className="input-icon" /> &nbsp; Pilih Tipe Motor <b>*</b>
                   </label>
                   <select value={carType} onChange={handleCar}>
-                    <option>Select your car type</option>
-                    <option value="Audi A1 S-Line">Audi A1 S-Line</option>
-                    <option value="VW Golf 6">VW Golf 6</option>
-                    <option value="Toyota Camry">Toyota Camry</option>
-                    <option value="BMW 320 ModernLine">
-                      BMW 320 ModernLine
-                    </option>
-                    <option value="Mercedes-Benz GLK">Mercedes-Benz GLK</option>
-                    <option value="VW Passat CC">VW Passat CC</option>
+                    <option>pilih jenis motor </option>
+                    <option value="Yamaha Fino">Yamaha Fino</option>
+                    <option value="Yamaha Fazzio">Yamaha Fazzio</option>
+                    <option value="Yamaha Nmax">Yamaha Nmax</option>
+                    <option value="Honda Scoopy">Honda Scoopy</option>
+                    <option value="Honda Beat">Honda Beat</option>
+                    <option value="Honda Vario">Honda Vario</option>
                   </select>
                 </div>
 
                 <div className="box-form__car-type">
                   <label>
-                    <IconMapPinFilled className="input-icon" /> &nbsp; Pick-up{" "}
+                    <IconMapPinFilled className="input-icon" /> &nbsp; Lokasi Antar{" "}
                     <b>*</b>
                   </label>
                   <select value={pickUp} onChange={handlePick}>
-                    <option>Select pick up location</option>
-                    <option>New York</option>
-                    <option>Rome</option>
-                    <option>Los Angeles</option>
-                    <option>Las Vegas</option>
-                    <option>Barcellona</option>
+                    <option>pilih lokasi antar</option>
+                    <option>Stasiun Lempuyangan</option>
+                    <option>Stasiun Tugu</option>
+                    <option>Jl. Prawirotaman</option>
+                    <option>Malioboro</option>
+                    <option>Tugu Yogyakarta</option>
                   </select>
                 </div>
 
                 <div className="box-form__car-type">
                   <label>
-                    <IconMapPinFilled className="input-icon" /> &nbsp; Drop-of{" "}
+                    <IconMapPinFilled className="input-icon" /> &nbsp; Lokasi Jemput{" "}
                     <b>*</b>
                   </label>
                   <select value={dropOff} onChange={handleDrop}>
-                    <option>Select drop off location</option>
-                    <option>New York</option>
-                    <option>Rome</option>
-                    <option>Los Angeles</option>
-                    <option>Las Vegas</option>
-                    <option>Barcellona</option>
+                    <option>pilih lokasi jemput</option>
+                    <option>Stasiun Lempuyangan</option>
+                    <option>Stasiun Tugu</option>
+                    <option>Jl. Prawirotaman</option>
+                    <option>Malioboro</option>
+                    <option>Tugu Yogyakarta</option>
                   </select>
                 </div>
                 <div className="box-form__car-time">
                   <label htmlFor="picktime">
-                    <IconCalendarEvent className="input-icon" /> &nbsp; Pick-up{" "}
+                    <IconCalendarEvent className="input-icon" /> &nbsp; Dari Tanggal{" "}
                     <b>*</b>
                   </label>
                   <input
@@ -271,7 +332,7 @@ function BookCar() {
 
                 <div className="box-form__car-time">
                   <label htmlFor="droptime">
-                    <IconCalendarEvent className="input-icon" /> &nbsp; Drop-of{" "}
+                    <IconCalendarEvent className="input-icon" /> &nbsp; Sampai Tanggal{" "}
                     <b>*</b>
                   </label>
                   <input
@@ -283,7 +344,7 @@ function BookCar() {
                 </div>
 
                 <button onClick={openModal} type="submit">
-                  Search
+                  Cari
                 </button>
               </form>
             </div>
@@ -296,48 +357,58 @@ function BookCar() {
       <div className={`booking-modal ${modal ? "active-modal" : ""}`}>
         {/* title */}
         <div className="booking-modal__title">
-          <h2>Complete Reservation</h2>
+          <h2>Pemesanan</h2>
           <IconX onClick={openModal} />
         </div>
         {/* message */}
         <div className="booking-modal__message">
           <h4>
-            <IconInfoCircleFilled /> Upon completing this reservation enquiry,
-            you will receive:
+            <IconInfoCircleFilled /> Setelah klik tombol pesan,
+            Anda akan dialihkan ke WhatsApp Admin.
           </h4>
-          <p>
-            Your rental voucher to produce on arrival at the rental desk and a
-            toll-free customer support number.
+          <p>Silakan lanjutkan percakapan untuk menyelesaikan pemesanan kendaraan Anda.
           </p>
         </div>
         {/* car info */}
         <div className="booking-modal__car-info">
           <div className="dates-div">
-            <div className="booking-modal__car-info__dates">
-              <h5>Location & Date</h5>
-              <span>
-                <IconMapPinFilled />
-                <div>
-                  <h6>Pick-Up Date & Time</h6>
-                  <p>
-                    {pickTime} /{" "}
-                    <input type="time" className="input-time"></input>
-                  </p>
-                </div>
-              </span>
-            </div>
-            <div className="booking-modal__car-info__dates">
-              <span>
-                <IconMapPinFilled />
-                <div>
-                  <h6>Drop-Off Date & Time</h6>
-                  <p>
-                    {dropTime} /{" "}
-                    <input type="time" className="input-time"></input>
-                  </p>
-                </div>
-              </span>
-            </div>
+              <div className="booking-modal__car-info__dates">
+                <h5>Location & Date</h5>
+                <span>
+                  <IconMapPinFilled />
+                  <div>
+                    <h6>Pick-Up Date & Time</h6>
+                    <p>
+                      {pickTime} /{" "}
+                      <input 
+                        type="time" 
+                        className="input-time" 
+                        required 
+                        value={pickHour}
+                        onChange={handlePickHour}
+                      />
+                    </p>
+                  </div>
+                </span>
+              </div>
+              <div className="booking-modal__car-info__dates">
+                <span>
+                  <IconMapPinFilled />
+                  <div>
+                    <h6>Drop-Off Date & Time</h6>
+                    <p>
+                      {dropTime} /{" "}
+                      <input 
+                        type="time" 
+                        className="input-time" 
+                        required 
+                        value={dropHour}
+                        onChange={handleDropHour}
+                      />
+                    </p>
+                  </div>
+                </span>
+              </div>
             <div className="booking-modal__car-info__dates">
               <span>
                 <IconMapPinFilled />
@@ -347,7 +418,6 @@ function BookCar() {
                 </div>
               </span>
             </div>
-
             <div className="booking-modal__car-info__dates">
               <span>
                 <IconMapPinFilled />
@@ -360,130 +430,42 @@ function BookCar() {
           </div>
           <div className="booking-modal__car-info__model">
             <h5>
-              <span>Car -</span> {carType}
+              <span>Motor -</span> {carType}
             </h5>
             {imgUrl && <Image src={imgUrl} alt="car_img" />}
           </div>
-        </div>
-        {/* personal info */}
-        <div className="booking-modal__person-info">
-          <h4>Personal Information</h4>
-          <form className="info-form">
-            <div className="info-form__2col">
-              <span>
-                <label>
-                  First Name <b>*</b>
-                </label>
-                <input
-                  value={name}
-                  onChange={handleName}
-                  type="text"
-                  placeholder="Enter your first name"
-                ></input>
-                <p className="error-modal">This field is required.</p>
-              </span>
-
-              <span>
-                <label>
-                  Last Name <b>*</b>
-                </label>
-                <input
-                  value={lastName}
-                  onChange={handleLastName}
-                  type="text"
-                  placeholder="Enter your last name"
-                ></input>
-                <p className="error-modal ">This field is required.</p>
-              </span>
-
-              <span>
-                <label>
-                  Phone Number <b>*</b>
-                </label>
-                <input
-                  value={phone}
-                  onChange={handlePhone}
-                  type="tel"
-                  placeholder="Enter your phone number"
-                ></input>
-                <p className="error-modal">This field is required.</p>
-              </span>
-              <span>
-                <label>
-                  Age <b>*</b>
-                </label>
-                <input
-                  value={age}
-                  onChange={handleAge}
-                  type="number"
-                  placeholder="18"
-                ></input>
-                {ageError && <p className="error-modal" style={{ fontSize: 16, color: 'red' }}>{ageError}</p>}
-                <p className="error-modal ">This field is required.</p>
-              </span>
-            </div>
-            <div className="info-form__1col">
-              <span>
-                <label>
-                  Email <b>*</b>
-                </label>
-                <input
-                  value={email}
-                  onChange={handleEmail}
-                  type="email"
-                  placeholder="Enter your email address"
-                ></input>
-                <p className="error-modal">This field is required.</p>
-              </span>
-              <span>
-                <label>
-                  Address <b>*</b>
-                </label>
-                <input
-                  value={address}
-                  onChange={handleAddress}
-                  type="text"
-                  placeholder="Enter your street address"
-                ></input>
-                <p className="error-modal ">This field is required.</p>
-              </span>
-            </div>
-
-            <div className="info-form__2col">
-              <span>
-                <label>
-                  City <b>*</b>
-                </label>
-                <input
-                  value={city}
-                  onChange={handleCity}
-                  type="text"
-                  placeholder="Enter your city"
-                ></input>
-                <p className="error-modal">This field is required.</p>
-              </span>
-              <span>
-                <label>
-                  Zip Code <b>*</b>
-                </label>
-                <input
-                  value={zipcode}
-                  onChange={handleZip}
-                  type="text"
-                  placeholder="Enter your zip code"
-                ></input>
-                <p className="error-modal ">This field is required.</p>
-              </span>
-            </div>
-
-            <span className="info-form__checkbox">
-              <input type="checkbox"></input>
-              <p>Please send me latest news and updates</p>
-            </span>
-            <div className="reserve-button">
-              <button onClick={confirmBooking}>Reserve Now</button>
-            </div>
-          </form>
+          <br></br>
+          <br></br>
+          <div className="reserve-button-container" style={{ position: 'relative' }}>
+            <button 
+              className="reserve-button" 
+              onClick={confirmBooking} 
+              disabled={pickTime === "" || dropTime === "" || pickHour === "" || dropHour === ""}
+              title={pickTime === "" || dropTime === "" || pickHour === "" || dropHour === "" ? 
+                "Harap lengkapi tanggal dan waktu pemesanan terlebih dahulu" : ""}
+            >
+              Reserve Now
+            </button>
+            {(pickTime === "" || dropTime === "" || pickHour === "" || dropHour === "") && (
+              <div 
+                className="disabled-message"
+                style={{
+                  position: 'absolute',
+                  bottom: '-30px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  backgroundColor: '#ff6b6b',
+                  color: 'white',
+                  padding: '5px 10px',
+                  borderRadius: '5px',
+                  fontSize: '14px',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                Harap lengkapi tanggal dan waktu pemesanan
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

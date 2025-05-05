@@ -11,19 +11,17 @@ import { ScrollReveal } from "reveal-on-scroll-react"
 function Testimonials() {
   return (
     <>
-      <ScrollReveal.div className="testimonials-section" id="testimonials">
-        <div className="container">
+      <ScrollReveal.div className="testimonials-section">
+        <div id="testimonials" className="container">
           <div className="testimonials-content">
             <div className="testimonials-content__title">
-              <h4>Reviewed by People</h4>
-              <h2>{`Client's Testimonials`}</h2>
+              <h4>Ulasan dari Pelanggan</h4>
+              <h2>{`Testimoni Pelanggan`}</h2>
               <p>
                   {
-                    `
-                    Discover the positive impact we've made on the our clients by
-                    reading through their testimonials. Our clients have experienced
-                    our service and results, and they're eager to share their
-                    positive experiences with you.
+                    `Temukan dampak positif yang telah kami berikan kepada para Pelanggan kami melalui testimoni mereka. 
+                     Pelanggan kami telah merasakan layanan dan hasil kerja kami, 
+                     dan mereka antusias membagikan pengalaman positif mereka kepada Anda
                     `
                   }
               </p>
@@ -37,7 +35,7 @@ function Testimonials() {
                 <p>
                 {
                     `
-                    "We rented a car from this website and had an amazing
+                    "We rented a motorcycle from this website and had an amazing
                     experience! The booking was easy and the rental rates were
                     very affordable. "
                     `
@@ -48,7 +46,7 @@ function Testimonials() {
                     <Image src={Img2} alt="user_img" />
                     <span>
                       <h4>Parry Hotter</h4>
-                      <p>New York</p>
+                      <p>Depok</p>
                     </span>
                   </div>
                 </div>
@@ -61,8 +59,8 @@ function Testimonials() {
                 <p>
                 {
                     `
-                    "The car was in great condition and made our trip even better.
-                    Highly recommend for this car rental website!"
+                    "The bike was in great condition and made our trip even better.
+                    Highly recommend for this motorcycle rental website!"
                     `
                 }
                 </p>
@@ -71,7 +69,7 @@ function Testimonials() {
                     <Image src={Img3} alt="user_img" />
                     <span>
                       <h4>Ron Rizzly</h4>
-                      <p>Los Angeles</p>
+                      <p>Medan</p>
                     </span>
                   </div>
                 </div>

@@ -44,36 +44,36 @@ function Navbar() {
           <ul className="navbar__links">
             <li>
               <a className="home-link" href="/">
-                Home
+                Beranda
               </a>
             </li>
             <li>
               <a className="about-link" href="#about">
-                About 
+                Tentang Kami 
               </a>
             </li>
             <li>
               <a className="models-link" href="#pick__section">
-                Vehicle Models
+                Jenis Motor
               </a>
             </li>
             <li>
               <a className="testi-link" href="#testimonials">
-                Testimonials
+                Testimoni
               </a>
             </li>
             <li>
               <a className="team-link" href="#download">
-                Download
+                {/* Download */}
               </a>
             </li>
           </ul>
-          <div className="navbar__buttons">
-            <a className="navbar__buttons__sign-in" href="/">
-              Sign In
+          <div>
+            <a href="/">
+              {/* Sign In */}
             </a>
-            <a className="navbar__buttons__register" href="/">
-              Register
+            <a href="/">
+              {/* Register */}
             </a>
           </div>
 
