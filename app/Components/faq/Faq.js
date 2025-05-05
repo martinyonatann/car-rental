@@ -23,10 +23,10 @@ function Faq() {
         <div className="faq-content">
           <div className="faq-content__title">
             <h5>FAQ</h5>
-            <h2>Frequently Asked Questions</h2>
+            <h2>Pertanyaan yang Sering Diajukan</h2>
             <p>
-              Frequently Asked Questions About the Car Rental Booking Process
-              on Our Website: Answers to Common Concerns and Inquiries.
+              Temukan jawaban dari pertanyaan umum seputar proses pemesanan dan penyewaan motor
+              di The Vroom Vroom Rental Jogja. Kami bantu kamu berkendara tanpa khawatir!
             </p>
           </div>
 
@@ -39,7 +39,7 @@ function Faq() {
                   activeQ === "q1" ? "active-question active-background" : ""
                 }`}
               >
-                <p id="q1__p">1. What is special about comparing rental car deals?</p>
+                <p id="q1__p">1. Kenapa harus sewa motor di The Vroom Vroom Rental?</p>
                 <IconChevronDown />
               </div>
               <div
@@ -47,18 +47,12 @@ function Faq() {
                   activeQ === "q1" ? "active-answer" : ""
                 }`}
               >
-                Comparing rental car deals is important as it helps find the
-                best deal that fits your budget and requirements, ensuring you
-                get the most value for your money. By comparing various
-                options, you can find deals that offer lower prices,
-                additional services, or better car models. You can find car
-                rental deals by researching online and comparing prices from
-                different rental companies.
+                Kami menyediakan berbagai pilihan motor berkualitas, dari matik hingga motor sport,
+                dengan harga terjangkau dan proses pemesanan yang mudah. Lokasi kami strategis di Jogja,
+                dan tim kami siap bantu 24/7. Cocok buat kamu yang ingin eksplor Jogja tanpa ribet!
               </div>
             </div>
 
-            {/* Ripeti questo blocco per le altre domande */}
-            
             <div className="faq-box">
               <div
                 id="q2"
@@ -67,7 +61,7 @@ function Faq() {
                   activeQ === "q2" ? "active-question active-background" : ""
                 }`}
               >
-                <p id="q2__p">2. How do I find the car rental deals?</p>
+                <p id="q2__p">2. Bagaimana cara memesan motor?</p>
                 <IconChevronDown />
               </div>
               <div
@@ -75,13 +69,9 @@ function Faq() {
                   activeQ === "q2" ? "active-answer" : ""
                 }`}
               >
-                You can find car rental deals by researching online and
-                comparing prices from different rental companies. Websites
-                such as Expedia, Kayak, and Travelocity allow you to compare
-                prices and view available rental options. It is also
-                recommended to sign up for email newsletters and follow rental
-                car companies on social media to be informed of any special
-                deals or promotions.
+                Kamu bisa memesan langsung melalui website kami, WhatsApp, atau datang langsung
+                ke lokasi. Pilih motor yang kamu inginkan, isi data diri, dan pilih waktu pengambilan.
+                Kami juga bisa antar motor ke tempat kamu menginap!
               </div>
             </div>
 
@@ -93,7 +83,7 @@ function Faq() {
                   activeQ === "q3" ? "active-question active-background" : ""
                 }`}
               >
-                <p id="q3__p">3. How do I find such low rental car prices?</p>
+                <p id="q3__p">3. Dokumen apa saja yang dibutuhkan untuk sewa motor?</p>
                 <IconChevronDown />
               </div>
               <div
@@ -101,17 +91,31 @@ function Faq() {
                   activeQ === "q3" ? "active-answer" : ""
                 }`}
               >
-                Book in advance: Booking your rental car ahead of time can
-                often result in lower prices. Compare prices from multiple
-                companies: Use websites like Kayak, Expedia, or Travelocity to
-                compare prices from multiple rental car companies. Look for
-                discount codes and coupons: Search for discount codes and
-                coupons that you can use to lower the rental price. Renting
-                from an off-airport location can sometimes result in lower
-                prices.
+                Untuk menyewa motor, kamu cukup menunjukkan KTP dan SIM C yang masih berlaku.
+                Jika kamu wisatawan asing, kami menerima paspor dan SIM Internasional.
               </div>
             </div>
 
+            <div className="faq-box">
+              <div
+                id="q4"
+                onClick={() => toggleQuestion("q4")}
+                className={`faq-box__question ${
+                  activeQ === "q4" ? "active-question active-background" : ""
+                }`}
+              >
+                <p id="q4__p">4. Apakah motor bisa diantar ke hotel atau stasiun?</p>
+                <IconChevronDown />
+              </div>
+              <div
+                className={`faq-box__answer ${
+                  activeQ === "q4" ? "active-answer" : ""
+                }`}
+              >
+                Tentu saja! Kami menyediakan layanan antar dan jemput motor ke berbagai lokasi di Jogja
+                seperti hotel, homestay, stasiun, dan bandara. Cukup beri tahu kami lokasi dan waktunya.
+              </div>
+            </div>
           </div>
         </div>
       </div>

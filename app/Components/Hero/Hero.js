@@ -46,13 +46,12 @@ function Hero() {
           />
           <div className="hero-content">
             <div className="hero-content__text">
-              <h4>Plan your trip now</h4>
+              <h4>Rencanakan Liburanmu Sekarang!</h4>
               <h1>
-                Save <span>big</span> with our car rental
+                Sewa Motor di Jogja <span>Hemat & Bebas</span> Jelajah Wisata Favorit!
               </h1>
               <p>
-                Rent the car of your dreams.Unbeatable prices, unlimited miles,
-                flexible pick-up options and much more.
+              Nikmati kemudahan menjelajah Jogja dengan motor impianmu. Harga terjangkau, tanpa batasan kilometer, bisa antar-jemput, dan banyak pilihan tipe motor!
               </p>
               <div className="hero-content__text__btns">
                 <a
@@ -60,10 +59,10 @@ function Hero() {
                   className="hero-content__text__btns__book-ride"
                   href="#booking-section"
                 >
-                  Book Ride &nbsp; <IconCircleCheck />
+                  Pesan Sekarang &nbsp; <IconCircleCheck />
                 </a>
                 <a className="hero-content__text__btns__learn-more" href="/">
-                  Learn More &nbsp; <IconChevronRight />
+                 Selengkapnya &nbsp; <IconChevronRight />
                 </a>
               </div>
             </div>

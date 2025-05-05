@@ -9,7 +9,7 @@ import { ScrollReveal } from "reveal-on-scroll-react"
 function Download() {
   return (
     <>
-      <section className="download-section" id="download">
+      {/* <section className="download-section" id="download">
         <ScrollReveal.div className="container">
           <div className="download-text">
             <ScrollReveal.h2>Download our app to get most out of it</ScrollReveal.h2>
@@ -24,7 +24,7 @@ function Download() {
             </div>
           </div>
         </ScrollReveal.div>
-      </section>
+      </section> */}
     </>
   );
 }

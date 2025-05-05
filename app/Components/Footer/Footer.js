@@ -9,15 +9,14 @@ function Footer() {
           <div className="footer-content">
             <ul className="footer-content__1">
               <li>
-                <span>CAR</span> Rental
+                <span>The Vroom Vroom</span> Rental
               </li>
               <li>
-                We offers a big range of vehicles for all your driving needs. We
-                have the perfect car to meet your needs.
+              Kami menawarkan berbagai jenis kendaraan untuk memenuhi semua kebutuhan berkendara Anda. Kami memiliki motor yang sempurna sesuai kebutuhan Anda.
               </li>
               <li>
-                <a href="tel:123456789">
-                   &nbsp; (123) -456-789
+                <a href="https://wa.link/ldm4va">
+                   &nbsp; Whatsapp : +6281368380270
                 </a>
               </li>
 
@@ -26,23 +25,23 @@ function Footer() {
                   href="/ 
                 "
                 >
-                  &nbsp; carrental@gmail.com
+                  &nbsp; Email : vroomvroom@gmail.com
                 </a>
               </li>
             </ul>
             <ul className="footer-content__2">
               <li>Company</li>
               <li>
-                <a href="#home">New York</a>
+                <a href="#home">Beranda</a>
               </li>
               <li>
-                <a href="#home">Careers</a>
+                <a href="#about">Tentang Kami</a>
               </li>
               <li>
-                <a href="#home">Mobile</a>
+                <a href="#pick__section">Jenis Motor</a>
               </li>
               <li>
-                <a href="#home">Blog</a>
+                <a href="#testimonials">Testimoni</a>
               </li>
               <li>
                 <a href="#home">How we work</a>
@@ -51,22 +50,19 @@ function Footer() {
 
             <ul className="footer-content__2">
               <li>Working Hours</li>
-              <li>Mon - Fri: 9:00AM - 9:00PM</li>
-              <li>Sat: 9:00AM - 19:00PM</li>
-              <li>Sun: Closed</li>
+              <li>Senin - Jumat : 06:00 - 22:00 WIB</li>
+              <li>Sabtu - Minggu: 06:00 - 24:00 WIB</li>
             </ul>
 
             <ul className="footer-content__2">
-              <li>Subscription</li>
-              <li>
-                <p>Subscribe your Email address for latest news & updates.</p>
-              </li>
-              <li>
-                <input type="email" placeholder="Enter Email Address"></input>
-              </li>
-              <li>
-                <button className="submit-email">Submit</button>
-              </li>
+              <li>Lokasi Kami</li>
+              <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.7191395886803!2d110.35485567500531!3d-7.819524192201192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5795b88702eb%3A0x3fd9000f17f60323!2sBring%20In%20House%20Yogyakarta!5e0!3m2!1sen!2sid!4v1746468322843!5m2!1sen!2sid"
+                    width="100%"
+                    height="95%"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                  ></iframe>
             </ul>
           </div>
         </div>

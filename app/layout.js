@@ -6,10 +6,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: {
-    default: "Car Rental",
+    default: "The Vroom Vroom Rental",
     template: "%s",
   },
-  description: "Car rental",
+  description: "Rental Motor Jogja",
 };
 
 export default function RootLayout({ children }) {
